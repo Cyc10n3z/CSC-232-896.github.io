@@ -3,13 +3,14 @@
 * Date:          6/26/2020
 * Trace Folder:  HOMEWORK\Hw2\
 * File Name:     testRational.cpp, Rational.cpp, Rational.h
-* Description:   C++ Program 
+* Description:   C++ Program that tests all member and overloaded operator
+*                functions of the class 'Rational.h' in this 'testRational' file.
 -------------------------------------------------------------------------------------*/
 #include<iostream>
 #include<iomanip>
 #include<string>
 #include<cstring>
-#include "Rational.h"//Rational class definition
+#include "Rational.h"//'Rational' class definition
 using namespace std;
 
 /************************************************************************************
@@ -41,7 +42,7 @@ int main() {
     cout << "Is " << r1 << " >= " << r2 << "? " << (r1 >= r2) << endl;
     //Test the overloaded extraction operator
     cout << "\nTesting the extraction operator" << endl;
-    cout << "Enter a rational number in the form a/b ";
+    cout << "Enter a rational number in the form a/b: ";
     cin >> r1;
     cout <<"This rational is equal to " << r1 << endl;
     //Test the overloaded pre-increment operator

@@ -1,5 +1,5 @@
 /************************************************************************************
-*             This is an implementation file for the Ship class                     *
+*             This is an implementation file for the Rational class                 *
 *	                   that determines what this class does.                        *
 *************************************************************************************/
 #include<iostream>
@@ -7,11 +7,11 @@
 using namespace std;
 
 /************************************************************************************
-*							   DayOfYear.h Member Functions			                *
+*							   Rational.h Member Functions			                *
 *************************************************************************************/
 /**
  * This member function simplifies two 'Rational' number terms 'numer' and 'denom'
- * to their simpliest/smallest value(s).
+ * to their simpliest/smallest value(s). Called inside the Constructor.
  * 
  * @param none 
  * @return this -- 'this' pointer to a 'Rational' object
@@ -30,11 +30,11 @@ Rational Rational::simplify(){
  * 'Rational' numbers and returns that divisor.
  * 
  * @param numer, denom -- int, int
- * @return gcd -- int
+ * @return findGCD() -- int function (Recursion)
  */
 int Rational::findGCD(int numer, int denom) {
     //Recursively find the G.C.D. IF denominator is not 0
-    return (denom == 0)? numer:findGCD(denom, numer % denom);
+    return (denom == 0)? numer : findGCD(denom, numer % denom);
 }
 /**
  * This member function overloads the addition operator.
@@ -46,9 +46,9 @@ Rational Rational::operator + (const Rational &right) const {
     //Class object 'r' for overloading the + operator
     Rational r;
     //Overload the + operator
-    r.numer = this->numer * right.denom + right.numer * this->denom;
-    r.denom = this->denom * right.denom;
-    r.simplify();
+    r.numer = numer * right.denom + right.numer * denom;
+    r.denom = denom * right.denom;
+    r.simplify();//Find G.C.D.
     return r;
 }
 /**
@@ -63,7 +63,7 @@ Rational Rational::operator - (const Rational &right) const {
     //Overload the - operator
     r.numer = numer * right.denom - right.numer * denom;
     r.denom = denom * right.denom;
-    r.simplify();
+    r.simplify();//Find G.C.D.
     return r;
 }
 /**
@@ -72,12 +72,13 @@ Rational Rational::operator - (const Rational &right) const {
 * @param &right -- referenced const 'Rational' object 
  * @return r -- 'Rational' object
  */
-Rational Rational::operator * (const Rational &right) {
+Rational Rational::operator * (const Rational &right) const {
     //Class object 'r' for overloading the / operator
     Rational r;
     //Overload the / operator
-    r.numer = numer * right.denom;
-    r.denom = denom * right.numer;
+    r.numer = numer * right.numer;
+    r.denom = denom * right.denom;
+    r.simplify();//Find G.C.D.
     return r;
 }
 /**
@@ -90,8 +91,9 @@ Rational Rational::operator / (const Rational &right) const {
     //Class object 'r' for overloading the / operator
     Rational r;
     //Overload the / operator
-    r.numer = numer / right.denom;
-    r.denom = denom / right.numer;
+    r.numer = numer * right.denom;
+    r.denom = denom * right.numer;
+    r.simplify();//Find G.C.D.
     return r;
 }
 /**
@@ -102,7 +104,7 @@ Rational Rational::operator / (const Rational &right) const {
  */
 bool Rational::operator > (const Rational &right) const {
     //Return the value of the boolean comparison
-    return (numer > right.numer) && (denom > right.denom);
+    return (numer > right.numer) || (denom > right.denom);
 }
 /**
  * This member function overloads the greater than or equals operator.
@@ -110,9 +112,9 @@ bool Rational::operator > (const Rational &right) const {
  * @param &right -- referenced 'Rational' object
  * @return "boolean expression" -- const bool
  */
-bool Rational::operator >= (const Rational& right) const {
+bool Rational::operator >= (const Rational &right) const {
     //Return the value of the boolean comparison
-    return (numer >= right.numer) && (denom >= right.denom);
+    return (numer >= right.numer) || (denom >= right.denom);
 }
 /**
  * This member function overloads the less than operator.
@@ -120,9 +122,9 @@ bool Rational::operator >= (const Rational& right) const {
  * @param &right -- referenced 'Rational' object
  * @return "boolean expression" -- const bool
  */
-bool Rational::operator < (const Rational& right) const {
+bool Rational::operator < (const Rational &right) const {
     //Return the value of the boolean comparison
-    return (numer < right.numer) && (denom < right.denom);
+    return (this->numer < right.numer) && (this->denom < right.denom);
 }
 /**
  * This member function overloads the less than or equals operator.
@@ -130,7 +132,7 @@ bool Rational::operator < (const Rational& right) const {
  * @param &right -- referenced 'Rational' object
  * @return "boolean expression" -- const bool
  */
-bool Rational::operator <= (const Rational& right) const {
+bool Rational::operator <= (const Rational &right) const {
     //Return the value of the boolean comparison
     return (numer <= right.numer) && (denom <= right.denom);
 }
@@ -163,8 +165,9 @@ bool Rational::operator != (const Rational& right) const {
 istream &operator >> (istream &stream, Rational &obj){
     //Input 'Rational' object values into the istream object for overloading
     stream >> obj.numer;
+    stream.ignore();//Ignore the '/' character between numer and denom, in the istream object stream
     stream >> obj.denom;
-    obj.simplify();//Simplify the 'Rational' objects numerator and denominator
+    obj.simplify();//Simplify the 'Rational' reference objects numerator and denominator
     //Return the input stream object
     return stream;
 }
@@ -186,11 +189,10 @@ ostream &operator << (ostream &stream, const Rational &obj){
  * This member function overloads the pre-increment operator.
  * 
  * @param none
- * @return *this -- 'this' 'Rational' object pointer
+ * @return *this -- this 'Rational' object pointer
  */
 Rational Rational::operator ++ (){
     ++numer;
-    ++denom;
     simplify();
     return *this;
 }
@@ -205,20 +207,18 @@ Rational Rational::operator ++ (int){
     Rational temp = *this;
     //
     numer++;
-    denom++;
+    simplify();
     return temp;
 }
 /**
  * This member function overloads the pre-decrement operator.
  * 
  * @param none
- * @return *this -- 'this' 'Rational' object pointer 
+ * @return *this -- this 'Rational' object pointer 
  */
 Rational Rational::operator -- (){
     //
     --numer;
-    --denom;
-    //
     simplify();
     return *this;
 }
@@ -233,7 +233,7 @@ Rational Rational::operator -- (int){
     Rational temp = *this;
     //
     numer--;
-    denom--;
+    simplify();
     return temp;
 }
 /************************************************************************************/
