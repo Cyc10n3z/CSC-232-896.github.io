@@ -26,6 +26,7 @@ class Ship
             name = n; 
             buildYear = year;
         }
+        virtual ~Ship(){}//Virtual Destructor
         //Accessor and Mutator Member Functions
         string getName() const {
             return name;

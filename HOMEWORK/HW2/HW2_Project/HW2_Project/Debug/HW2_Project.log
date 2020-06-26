@@ -1,0 +1,19 @@
+﻿  Rational.cpp
+C:\Users\Stryker\Projects\GitHub\CSC-232-896.github.io\HOMEWORK\HW2\Rational.cpp(53): error C2668: 'Rational::Rational': ambiguous call to overloaded function
+C:\Users\Stryker\Projects\GitHub\CSC-232-896.github.io\HOMEWORK\HW2\Rational.h(21,9): message : could be 'Rational::Rational(int,int)'
+C:\Users\Stryker\Projects\GitHub\CSC-232-896.github.io\HOMEWORK\HW2\Rational.h(20,9): message : or       'Rational::Rational(void)'
+C:\Users\Stryker\Projects\GitHub\CSC-232-896.github.io\HOMEWORK\HW2\Rational.cpp(53,15): message : while trying to match the argument list '()'
+C:\Users\Stryker\Projects\GitHub\CSC-232-896.github.io\HOMEWORK\HW2\Rational.cpp(68): error C2668: 'Rational::Rational': ambiguous call to overloaded function
+C:\Users\Stryker\Projects\GitHub\CSC-232-896.github.io\HOMEWORK\HW2\Rational.h(21,9): message : could be 'Rational::Rational(int,int)'
+C:\Users\Stryker\Projects\GitHub\CSC-232-896.github.io\HOMEWORK\HW2\Rational.h(20,9): message : or       'Rational::Rational(void)'
+C:\Users\Stryker\Projects\GitHub\CSC-232-896.github.io\HOMEWORK\HW2\Rational.cpp(68,15): message : while trying to match the argument list '()'
+C:\Users\Stryker\Projects\GitHub\CSC-232-896.github.io\HOMEWORK\HW2\Rational.cpp(83): error C2668: 'Rational::Rational': ambiguous call to overloaded function
+C:\Users\Stryker\Projects\GitHub\CSC-232-896.github.io\HOMEWORK\HW2\Rational.h(21,9): message : could be 'Rational::Rational(int,int)'
+C:\Users\Stryker\Projects\GitHub\CSC-232-896.github.io\HOMEWORK\HW2\Rational.h(20,9): message : or       'Rational::Rational(void)'
+C:\Users\Stryker\Projects\GitHub\CSC-232-896.github.io\HOMEWORK\HW2\Rational.cpp(83,15): message : while trying to match the argument list '()'
+C:\Users\Stryker\Projects\GitHub\CSC-232-896.github.io\HOMEWORK\HW2\Rational.cpp(97): error C2668: 'Rational::Rational': ambiguous call to overloaded function
+C:\Users\Stryker\Projects\GitHub\CSC-232-896.github.io\HOMEWORK\HW2\Rational.h(21,9): message : could be 'Rational::Rational(int,int)'
+C:\Users\Stryker\Projects\GitHub\CSC-232-896.github.io\HOMEWORK\HW2\Rational.h(20,9): message : or       'Rational::Rational(void)'
+C:\Users\Stryker\Projects\GitHub\CSC-232-896.github.io\HOMEWORK\HW2\Rational.cpp(97,15): message : while trying to match the argument list '()'
+  testRational.cpp
+  Generating Code...

@@ -2,8 +2,8 @@
  * Author:        Carlos Izaguirre and John Lorette III
  * Date:          6/23/2020
  * Trace Folder:  LABS\Lab5\
- * File Name:     Lab5_Izaguirre_Carlos_LoretteIII_John.cpp, Ship.h, Ship.cpp, 
- *                CruiseShip.h, CruiseShip.cpp, CargoShip.h, CargoShip.cpp
+ * File Name:     testShip.cpp, Ship.h, Ship.cpp, CruiseShip.h, 
+ *                CruiseShip.cpp, CargoShip.h, CargoShip.cpp
  * Description:   C++ Program demonstrates the use of three 'Ship' classes.
  ------------------------------------------------------------------------------------*/
 #include<iostream>
@@ -29,12 +29,14 @@ int main() {
     }
     cout << endl << endl;
 
-    //Release the dynamically allocated memory
-    delete [] *ships;
-    *ships = nullptr;
+    //Release the dynamically allocated memory for each array element and then the array itself
+    delete ships[0];
     ships[0] = nullptr;
+    delete ships[1];
     ships[1] = nullptr;
-    ships[2] = nullptr;    
+    delete ships[2];
+    ships[2] = nullptr;
+    delete [] *ships;
     //Exit the main function, with 0 indicating success
     return 0;
 }
