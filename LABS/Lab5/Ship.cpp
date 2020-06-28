@@ -7,7 +7,7 @@
 using namespace std;
 
 /************************************************************************************
-*							   DayOfYear.h Member Functions			                *
+*							   Ship.h Member Functions			                *
 *************************************************************************************/
 /**
  * This virtual member function prints to the screen a ship's name and year it was built.

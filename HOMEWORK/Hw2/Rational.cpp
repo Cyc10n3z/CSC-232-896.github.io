@@ -3,7 +3,7 @@
 *	                   that determines what this class does.                        *
 *************************************************************************************/
 #include<iostream>
-#include "Rational.h"//'Rational' class definition
+#include"Rational.h"//'Rational' class definition
 using namespace std;
 
 /************************************************************************************
@@ -18,10 +18,10 @@ using namespace std;
  */
 Rational Rational::simplify(){
     //Variable for simplifying int terms by finding the G.C.D.
-    int temp = findGCD(numer, denom);
+    int gcd = findGCD(numer, denom);
     //Simplify the numerator and denominator terms with the G.C.D.
-    numer /= temp;
-    denom /= temp;
+    numer /= gcd;
+    denom /= gcd;
     //Return the simplified terms with 'this' pointer
     return *this;
 }
@@ -30,7 +30,7 @@ Rational Rational::simplify(){
  * 'Rational' numbers and returns that divisor.
  * 
  * @param numer, denom -- int, int
- * @return findGCD() -- int function (Recursion)
+ * @return findGCD() -- int function (Recursive Algorithm)
  */
 int Rational::findGCD(int numer, int denom) {
     //Recursively find the G.C.D. IF denominator is not 0
@@ -124,7 +124,7 @@ bool Rational::operator >= (const Rational &right) const {
  */
 bool Rational::operator < (const Rational &right) const {
     //Return the value of the boolean comparison
-    return (this->numer < right.numer) && (this->denom < right.denom);
+    return (numer < right.numer) && (denom < right.denom);
 }
 /**
  * This member function overloads the less than or equals operator.
@@ -152,7 +152,7 @@ bool Rational::operator == (const Rational &right) const {
  * @param &right -- referenced 'Rational' object
  * @return "boolean expression" -- const bool
  */
-bool Rational::operator != (const Rational& right) const {
+bool Rational::operator != (const Rational &right) const {
     //Return the value of the boolean comparison
     return (numer != right.numer) || (denom != right.denom);
 }
@@ -179,9 +179,7 @@ istream &operator >> (istream &stream, Rational &obj){
  */
 ostream &operator << (ostream &stream, const Rational &obj){
     //Output 'Rational' object values into the ostream object for overloading
-    stream << obj.numer;
-    stream << "/";
-    stream << obj.denom;
+    stream << obj.numer << "/" << obj.denom;
     //Return the output stream object
     return stream;
 }

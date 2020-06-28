@@ -1,7 +1,7 @@
 /*------------------------------------------------------------------------------------
 * Author:        Carlos Izaguirre and John Lorette III
 * Date:          6/26/2020
-* Trace Folder:  HOMEWORK\Hw2\
+* Trace Folder:  HOMEWORK\HW2\
 * File Name:     testRational.cpp, Rational.cpp, Rational.h
 * Description:   C++ Program that tests all member and overloaded operator
 *                functions of the class 'Rational.h' in this 'testRational' file.
@@ -9,7 +9,6 @@
 #include<iostream>
 #include<iomanip>
 #include<string>
-#include<cstring>
 #include "Rational.h"//'Rational' class definition
 using namespace std;
 
