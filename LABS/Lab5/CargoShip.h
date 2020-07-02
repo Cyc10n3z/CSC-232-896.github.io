@@ -36,6 +36,6 @@ class CargoShip : public Ship
             capacity = c;
         }
         //'print()' Function that overrides the base class 'print()' Function
-        virtual void print();
+        virtual void print() override;
 };
 #endif

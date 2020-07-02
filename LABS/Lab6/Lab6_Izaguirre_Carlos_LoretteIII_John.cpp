@@ -1,36 +1,58 @@
 /*------------------------------------------------------------------------------------
  * Author:        Carlos Izaguirre and John Lorette III
- * Date:          6/307/2020
+ * Date:          6/30/2020
  * Trace Folder:  LABS\Lab6\
  * File Name:     Lab6_Izaguirre_Carlos_LoretteIII_John.cpp
- * Description:   C++ Program that 
+ * Description:   C++ Program that tests the functionality of a class template 
+ *                called 'Bag'. Also tests the functionality of exceptions.
  ------------------------------------------------------------------------------------*/
 #include<iostream>
 #include<iomanip>
 #include<string>
+#include<exception>//Include for using exception class?
 using namespace std;
 
 /************************************************************************************
-*                          Bag Template Class Definition                            *
+*                        "Bag" Class Template Definition                            *
 *************************************************************************************/
-template <class T> class Bag//Class Template Definition
+template <class T> class Bag//Defines a class template called 'Bag'
 {
     private:
-        T *list;                          //Array of pointers (T generic type), for storing the generic values in a bag
-        int capacity;                     //Maximum capacity for a bag, the default value is 10
-        int currentSize;                  //Current number/count of generic values in a bag
+        T *list;                //Array of pointers (T generic type), for storing the generic values in a bag
+        int capacity;           //Maximum capacity for a bag, the default value is 10
+        int currentSize;        //Current number/count of generic values in a bag
     public:
-        Bag<T>(int cap = 10);             //Constructor
-        ~Bag<T>();                        //Destructor
-        T findMaximum();                  //Template Function for finding the largest generic value
-        bool isFull();                    //Returns true if list is full
-        void add(T);                      //Function that adds a generic value to the end of the T type pointer array
-        void display();                   //Prints out the values in the bag
+        Bag(int cap = 10);      //Parameterized Constructor
+        ~Bag();                 //Destructor
+        T findMaximum();        //Template Function for finding the largest generic value
+        bool isFull();          //Returns true if list is full
+        void add(T);            //Function that adds a generic value to the end of the T type pointer array
+        void display();         //Prints out the values in the bag
 };
 /************************************************************************************
-*                      Bag Template Class Member Functions                          *
+*                     (Custom) Exception Class Definition                           *
 *************************************************************************************/
-//Parameterized Constructor
+class InvalidSize
+{
+    private:
+        string msg;
+    public:
+        InvalidSize(){
+            msg = "Invalid Bag Size! Please try again.\n";
+        }
+        InvalidSize(string str){
+            msg = str;
+        }
+        string what() {
+            return msg;
+        }
+};
+/************************************************************************************
+*             'Bag' Class Template: Member Function Implementation                  *
+*************************************************************************************/
+/**
+ * This is the class template's parameterized Constructor.
+ */
 template <class T> 
 Bag<T>::Bag(int cap)
 {
@@ -43,7 +65,9 @@ Bag<T>::Bag(int cap)
     list = new T[capacity];
     currentSize = 0;
 }
-//Destructor
+/**
+ * This is the class template's Destructor.
+ */
 template <typename T> 
 Bag<T>::~Bag()
 {
@@ -51,11 +75,11 @@ Bag<T>::~Bag()
     delete [] list;
 }
 /**
- * This template class member function finds the largest generic value in
+ * This class template member function finds the largest generic value in
  * a generic type class template object and returns the generic value.
  * 
- * @param x -- Template class object 
- * @return maxValue -- Template class object generic maximum value 
+ * @param x -- Class template object 
+ * @return maxValue -- Class template object generic maximum value 
  */
 template<typename T>
 T Bag<T>::findMaximum() {
@@ -70,7 +94,7 @@ T Bag<T>::findMaximum() {
     return maxValue;
 }
 /**
- * This template class member function determines if the 
+ * This class template member function determines if the 
  * current 'Bag' class object is full.
  *
  * @param none
@@ -82,7 +106,7 @@ bool Bag<T>::isFull()
     return currentSize == capacity;
 }
 /**
- * This template class member function adds a value to the end of 
+ * This class template member function adds a value to the end of 
  * the array '*list' data member IF the '*list' array is not full.
  * 
  * @param value -- int
@@ -99,8 +123,8 @@ void Bag<T>::add(T value)
     }
 }
 /**
- * This template class member function prints/displays to the console 
- * screen the values contained in '*list' for the current 'Bag' template class.
+ * This class template member function prints/displays to the console 
+ * screen the values contained in '*list' for the current 'Bag' class template.
  *
  * @param none
  * @return none -- void
@@ -118,57 +142,54 @@ void Bag<T>::display()
 *                 The programs main method, or control function                     *
 *************************************************************************************/
 int main() {
-    //Create a 'Bag' template class object that contains integers
+    //Create a 'Bag' class template object that contains integers
     Bag<int> b(5);
-    //Add integer values to the 'b' template class object
+    //Add integer values to the 'b' class template object
     b.add(4);
     b.add(20);
     b.add(-3);
-    //Display the template class 'b' object's generic values
+    //Display the class template 'b' object's generic values
     cout << "Values in the Bag: ";
     b.display();
-    cout << "Largest Value in the Bag is: " << b.findMaximum();
+    cout << "Largest Value in the Bag is: " << b.findMaximum() << endl << endl;
 
-    //Prompt the user to enter a value between 1 and 10 for the SIZE of the template class object 'names'
+    //Variable(s) used for exception handling and a class template object 'names'
     int SIZE = 0;
-    bool valid = false;//Validation loop variable
-    cout << "\n\nEnter a value between 1 and 10 for the size of a bag of names: ";
-    cin >> SIZE;
+    bool valid = false;//Loop variable
     //Loop to validate the user's input with exception handling
     while (!valid) {
-        //Exception handling for the template class object of string type called 'names'
+        //Exception handling for the int variable 'SIZE'
         try
-        {
-            if (SIZE < 1 || SIZE > 10) {
-                string errorMessage = "Invalid Bag Size! Please try again.\n";
-                throw errorMessage;
-            }
+        {   
+            //Prompt the user to enter an int value between 1 and 10 for the SIZE of the class template object 'names'
+            cout << "Enter a value between 1 and 10 for the size of a bag of names: ";
+            cin >> SIZE;
+            //Throw an exception if the value of the 'SIZE' variable is invalid
+            if (SIZE < 1 || SIZE > 10)
+                throw InvalidSize();
+            //Exit the while loop if the value of the 'SIZE' variable is valid
             if (SIZE >= 1 || SIZE <= 10)
                 valid = true;
         }
-        catch (string errorMessage)
+        catch (InvalidSize error)//Catch any errors of 'InvalidSize()' exception type
         {
-            cout << errorMessage;
-            cout << "Enter a value between 1 and 10 for the size of a bag of names: ";
-            cin >> SIZE;
+            cout << error.what();
         }
     }
-
-    //Create a new 'Bag' template class object that contains names (as strings)
+    //Create a new 'Bag' class template object that contains names (as strings)
     Bag<string> names(SIZE);
-    //Add values to the 'names' template class object
+    //Add values to the 'names' class template object
     names.add("Mary");
     names.add("Susan");
     names.add("Edward");
     names.add("Russ");
     names.add("John");
     names.add("Tracy");
-    //Display the template class 'names' object's generic values
+    //Display the class template 'names' object's generic values
     cout << "\nValues in the Bag: ";
     names.display();
     //Find the largest value in 'names'
     cout << "Largest Value in the Bag is: " << names.findMaximum() << endl;
-
 
     //Exit the main function, with 0 indicating success
     return 0;

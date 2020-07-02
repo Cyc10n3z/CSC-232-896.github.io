@@ -36,6 +36,6 @@ class CruiseShip : public Ship
             maxPassengers = people;
         }
         //'print()' Function that overrides the base class 'print()' Function
-        virtual void print();
+        virtual void print() override;
 };
 #endif
