@@ -45,7 +45,7 @@ int main(){
   int numStudents, numExams, numQuizzes, numHW, numLabs;
 
   //Read the number of students, exams, quizzes, homeworks, and labs from a file
-  fin.open("numbersActivities.txt");
+  fin.open("numbersActivities2.txt");
   assert(fin); //make sure that file was opened successfully; otherwise, terminate program with an error message
   //Read the number of students from the file
   fin >> numStudents;
@@ -96,7 +96,7 @@ Student *readStudentsData(int numStudents, int numExams, int numQuizzes, int num
   ifstream fin;//File input stream object
   string line;//String for reading line by line in a text file
 
-  fin.open("grades.txt");
+  fin.open("gradesTest.txt");
   assert(fin);//IF the file failed to open, terminate program with an error message
   //Allocate memory for the dynamic array of structures 'studentsData'
   studentsData = new Student[numStudents];
