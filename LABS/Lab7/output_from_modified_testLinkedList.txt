@@ -1,0 +1,50 @@
+Here are the nodes now.
+5 10 15 20 25 25 30 40 50
+
+Searching for 5 0
+Searching for 25 4
+Searching for 50 8
+Searching for 1 -1
+Searching for 31 -1
+Searching for 71 -1
+
+Number of nodes in the list is 9
+
+Testing copy constructor
+
+Here is the second list: 5 10 15 20 25 25 30 40 50
+
+Here is the second list after updates: 1 10 15 20 25 25 30 40
+
+Here is the first list: 5 10 15 20 25 25 30 40 50
+
+Calling deleteByPosition(-2) ---> There is no node at position -2
+Calling deleteByPosition(100) ---> There is no node at position 100
+Calling deleteByPosition(9) ---> There is no node at position 9
+Calling deleteByPosition(8)
+Here are the nodes now: 5 10 15 20 25 25 30 40
+Calling deleteByPosition(0)
+Here are the nodes now: 10 15 20 25 25 30 40
+Calling deleteByPosition(4)
+
+Here are the nodes now: 10 15 20 25 30 40
+
+Calling insertByPosition(0, 200) ---> Cannot insert 200 at the head because that would make the list unsorted!
+Calling insertByPosition(-5, 200) ---> Cannot insert 200 at the head because that would make the list unsorted!
+
+Calling insertByPosition(3, -100) ---> Cannot insert -100 at location 3 because that would make the list unsorted!
+Calling insertByPosition(10, -100) ---> Cannot insert -100 at the end because that would make the list unsorted!
+
+Calling insertByPosition(2, 77) ---> Cannot insert 77 at location 2 because that would make the list unsorted!
+Calling insertByPosition(4, 11) ---> Cannot insert 11 at location 4 because that would make the list unsorted!
+
+Calling insertByPosition(0, 8) --->
+Calling insertByPosition(-5, 5) --->
+Calling insertByPosition(7, 35) --->
+Calling insertByPosition(4, 15) --->
+Calling insertByPosition(9, 38) --->
+Calling insertByPosition(10, 70) ---> Cannot insert 70 at location 10 because that would make the list unsorted!
+Calling insertByPosition(11, 70) --->
+Calling insertByPosition(15, 80) --->
+
+Here are the nodes now: 5 8 10 15 15 20 25 30 35 38 40 70 80
