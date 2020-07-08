@@ -2,7 +2,7 @@
  * Author:        Matthew Lippelman and John Lorette III
  * Date:          7/9/2020
  * Trace Folder:  LABS\Lab8\
- * File Name:     Lab8_LoretteIII_John_Wemer_Dalton.cpp
+ * File Name:     Lab8_Lippelman_Matthew_LoretteIII_John.cpp
  * Description:   C++ Program to practice working with Iterators and the STL containers
  *                "forward_list" and "list". These containers represent singly and
  *                doubly linked lists, respectively.
