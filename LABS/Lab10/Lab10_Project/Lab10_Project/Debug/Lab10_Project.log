@@ -1,0 +1,8 @@
+﻿  Lab10_Adeyemo_Joy_LoretteIII_John.cpp
+C:\Users\Stryker\Projects\GitHub\CSC-232-896.github.io\LABS\Lab10\Lab10_Adeyemo_Joy_LoretteIII_John.cpp(103,12): warning C4101: 'front': unreferenced local variable
+C:\Users\Stryker\Projects\GitHub\CSC-232-896.github.io\LABS\Lab10\Lab10_Adeyemo_Joy_LoretteIII_John.cpp(39): message : see reference to function template instantiation 'void reverseUsingNtoFront<int>(std::queue<int,std::deque<int,std::allocator<int>>>)' being compiled
+C:\Users\Stryker\Projects\GitHub\CSC-232-896.github.io\LABS\Lab10\Lab10_Adeyemo_Joy_LoretteIII_John.cpp(103,20): warning C4101: 'back': unreferenced local variable
+C:\Users\Stryker\Projects\GitHub\CSC-232-896.github.io\LABS\Lab10\Lab10_Adeyemo_Joy_LoretteIII_John.cpp(122,12): warning C4101: 'front': unreferenced local variable
+C:\Users\Stryker\Projects\GitHub\CSC-232-896.github.io\LABS\Lab10\Lab10_Adeyemo_Joy_LoretteIII_John.cpp(43): message : see reference to function template instantiation 'void reverseQueue<int>(std::queue<int,std::deque<int,std::allocator<int>>>)' being compiled
+C:\Users\Stryker\Projects\GitHub\CSC-232-896.github.io\LABS\Lab10\Lab10_Adeyemo_Joy_LoretteIII_John.cpp(122,20): warning C4101: 'back': unreferenced local variable
+  Lab10_Project.vcxproj -> C:\Users\Stryker\Projects\GitHub\CSC-232-896.github.io\LABS\Lab10\Lab10_Project\Debug\Lab10_Project.exe
