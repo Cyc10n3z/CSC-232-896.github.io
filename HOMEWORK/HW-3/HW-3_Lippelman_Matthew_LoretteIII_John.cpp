@@ -91,8 +91,7 @@ void Stack<T>::copyStack(const Stack<T> &otherStack) {
         last = head;
         //Update the currently pointed to StackNode in 'otherStack', with the bottom linked StackNode
         current = current->bottom;
-
-        //Loop for copying the remaining Stack>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        //Loop for copying the remaining Stack
         while (current != nullptr) {
             //Dynamically allocate memory for a 'newNode' to copy to, from 'otherStack'
             newNode = new StackNode<T>;
