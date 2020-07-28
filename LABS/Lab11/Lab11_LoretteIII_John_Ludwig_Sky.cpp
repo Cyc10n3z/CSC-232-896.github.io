@@ -9,11 +9,6 @@
 #include<iomanip>
 using namespace std;
 
-//--- 7/20/2020 -> John Lorette III -- Completed recursive implementation's for the 'search()' function.                                               
-//--- 7/22-23/2020 -> John Lorette III -- Completed recursive implementation's for the 'printReverse()', 'replace()', and 'remove()' functions. 
-
-//--- 7/??/2020 -> Sky Ludwig -- ???
-
 /********************************************************************************
 *                      'ListNode' Structure Definition                          *
 ********************************************************************************/
@@ -156,12 +151,9 @@ void LinkedListRec::replace(ListNode *r, int oldValue, int newValue) {
     //Base Case 1
     if (r == nullptr)
         return;
-    //Loop 'countNodes()' times to search for 
-    for (int i = 0; i < countNodes(); i++) {
-        //IF the currently pointed to ListNode has the same value as the oldValue
-        if (r->value == oldValue) {
-            r->value = newValue;//Replace with newValue
-        }
+    //IF the currently pointed to ListNode has the same value as the oldValue
+    if (r->value == oldValue) {
+        r->value = newValue;//Replace with newValue
     }
     //Recursive function call
     replace(r->next, oldValue, newValue);
@@ -174,30 +166,30 @@ void LinkedListRec::replace(ListNode *r, int oldValue, int newValue) {
  * @param removePtr, value -- ListNode *, int
  * @return bool
  */
-bool LinkedListRec::remove(ListNode *removePtr, int value) {
+bool LinkedListRec::remove(ListNode* removePtr, int value) {
     //Pointer variable(s) for removing a ListNode in the current linked list
     ListNode *temp = head, *previous = head;
 
     //Base Case 1: IF the value specified is invalid
     if (value < 1)
-        return removePtr;
+        return false;
     //Base Case 2: IF the end of the current linked list is reached
     if (removePtr == nullptr)
         return false;
-    //Base Case 2: The value to be removed is found and is at the head of the current linked list
+    //Base Case 3: IF he value to be removed is found and is at the head of the current linked list
     if (removePtr == head && removePtr->value == value) {
-        //
+        //Change the head pointer to the next pointed to ListNode in the current linked list
         head = removePtr->next;
-        delete removePtr;
+        delete removePtr;//Delete the dynamic memory for the ListNode
+        return true;
     }else{
-        //Base Case 3: Check if the value to be removed is the next value in the current linked list
+        //Check IF the value to be removed is the next value in the current linked list
         if (removePtr->next && removePtr->next->value == value) {
-            //
+            //Store the pointed to link to the next pointed to ListNode in a temporary pointer
             temp = removePtr->next;
             removePtr->next = temp->next;
-            delete temp;
-            //?...
-            return remove(removePtr, value);
+            delete temp;//Delete the dynamic memory for the pointed to ListNode
+            return true;
         }
         //Recursive function call
         return remove(removePtr->next, value);
@@ -299,8 +291,8 @@ bool LinkedListRec::remove(int value) {
 int main() {
     //Create and Instantiate a LinkedListRec object called "myList"
     LinkedListRec myList;
-    //
-    for (int i = 1; i<= 5; i++)
+    //Loop int values 1 through 5 into the LinkedListRec object
+    for (int i = 1; i <= 5; i++)
         myList.addFirst(i);
     cout << endl << "Printing the list: ";
     myList.displayList();
